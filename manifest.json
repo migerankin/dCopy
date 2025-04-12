@@ -1,0 +1,95 @@
+{
+  "manifest_version": 3,
+  "name": "dCopy - 想我所想的便捷指令",
+  "short_name": "dCopy - easy use",
+  "version": "0.2.1",
+  "description": "· 为抖音、推特、B站平台添加便捷的交互指令",
+  "permissions": [
+    "downloads",
+    "clipboardWrite",
+    "storage",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "*://*.kemono.su/*",
+    "*://*.img.kemono.su/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["all/styles.css"],
+      "js": ["all/content.js"]
+    },
+    {
+      "matches": ["*://*.douyin.com/*"],
+      "css": ["douyin/styles.css"],
+      "js": [
+        "lib/jszip.min.js",
+        "douyin/content.js"
+      ]
+    },
+    {
+      "matches": ["*://*.twitter.com/*", "*://*.x.com/*"],
+      "css": ["twitter/styles.css"],
+      "js": [
+        "lib/jszip.min.js",
+        "twitter/content.js"
+      ]
+    },
+    {
+      "matches": ["*://*.yatta.moe/*"],
+      "css": ["yatta/styles.css"]
+    },
+    {
+      "matches": ["*://*.bilibili.com/*"],
+      "css": ["bilibili/styles.css"],
+      "js": ["bilibili/content.js"]
+    },
+    {
+      "matches": ["*://www.baidu.com/*"],
+      "css": ["baidu/styles.css"],
+      "js": ["baidu/content.js"]
+    },
+    {
+      "matches": ["*://*.bing.com/*"],
+      "css": ["bing/styles.css"],
+      "js": ["bing/content.js"]
+    },
+    {
+      "matches": ["*://tieba.baidu.com/*"],
+      "css": ["tieba/styles.css"],
+      "js": ["tieba/content.js"]
+    },
+    {
+      "matches": ["*://zhidao.baidu.com/*"],
+      "css": ["zhidao/styles.css"],
+      "js": ["zhidao/content.js"]
+    },
+    {
+      "matches": ["*://*.kemono.su/*"],
+      "css": ["kemono/styles.css"],
+      "js": [
+        "lib/jszip.min.js",
+        "kemono/content.js"
+      ]
+    },
+    {
+      "matches": ["*://*.18comic.vip/*"],
+      "css": ["18comic/styles.css"],
+      "js": ["18comic/content.js"]
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": [
+      "lib/jszip.min.js",
+      "assets/hidden_show_btn.png",
+      "pages/changelog.html"
+    ],
+    "matches": ["<all_urls>"]
+  }],
+  "update_url": "https://example.com/updates.xml",
+  "options_page": "pages/options.html",
+  "background": {
+    "service_worker": "background.js"
+  }
+} 

@@ -1,0 +1,20 @@
+/* 首页精简 */
+.s-isindex-wrap{
+    height: 0px;
+    overflow: hidden;
+}
+#head_wrapper{
+    height: 100% !important;
+    max-height: unset !important;
+}
+
+/* 搜索页屏蔽广告 */
+.result_hidden,
+#content_right{
+    display: none !important;
+}
+
+/* 搜索工具默认开启 */
+#tsn_inner{
+    top: 0px !important;
+}

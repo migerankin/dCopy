@@ -1,0 +1,24 @@
+div.photo_center_div,
+.row div.col-lg-3.col-md-3.col-sm-3.col-xs-6,
+.row div.col-lg-3.col-md-3.col-sm-3.col-xs-6.list-col,
+.col-md-3.col-sm-4.hidden-xs.hidden-sm > div:not(:first-child),
+.col-md-3.col-sm-4.hidden-xs > div:not(:first-child),
+div.center.scramble-page.thewayhome,
+a.nofollow.noopener,
+a.nofollow.noopener img,
+.row div.col-auto,
+div[data-insrm="1"],
+div[data-group="album_detail"]{
+    visibility: collapse !important;
+    display: none !important;
+    opacity: 0 !important;
+    user-select: none !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    clip-path: inset(100%) !important;
+    overflow: hidden !important;
+}

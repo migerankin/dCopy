@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>dCopy 设置</title>
+    <style>
+        :root {
+            --theme-color: #2196F3;
+            --theme-color-border: #1e7fce;
+        }
+        
+        body {
+            background-color: #181818;
+            color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-right: calc(20px + 15px);
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow-y: scroll;
+        }
+        a{
+            text-decoration: none;
+            color: #ffffffbe;
+        }
+        nav{
+            margin: 25px 5px 45px;
+        }
+        .setting-item h2{
+            color: #ffffffd0;
+        }
+        /* 开关样式 */
+        .switch-wrapper {
+            border-left: 4px solid var(--theme-color-border);
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .switch-wrapper:hover{
+            background-color: #282828;
+        }
+        .switch-label {
+            font-size: 14px;
+            color: #ffffffb3;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: #fff;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--theme-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        .tag{
+            font-size: 12px;
+            opacity: .45;
+            margin-left: 10px;
+        }
+        /* 搜索框样式 */
+        .search-box {
+            margin-bottom: 30px;
+        }
+        
+        .search-box input {
+            width: 800px;
+            box-sizing: border-box;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            background-color: #333;
+        }
+        
+        .search-box input::placeholder {
+            color: #666;
+        }
+
+        /* 隐藏不匹配的设置项 */
+        .setting-item > div.hidden {
+            display: none;
+        }
+
+        .exclude-manager {
+            margin-top: 20px;
+        }
+        
+        .exclude-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .exclude-input input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background: #1f1f1f;
+            color: #ffffffb3;
+        }
+        
+        .exclude-input button {
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            background: var(--theme-color);
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .exclude-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .exclude-list::-webkit-scrollbar {
+            width: 0px;
+        }
+        .exclude-list::-webkit-scrollbar-thumb {
+            background: #00000000;
+        }
+        
+        .exclude-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: #1f1f1f;
+            border-radius: 4px;
+        }
+        
+        .exclude-item button {
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: none;
+            background: #ff4444;
+            color: #fff;
+            cursor: pointer;
+        }
+        .setting-item-sub{
+            padding: 0 20px;
+        }
+        .setting-item-sub h2{
+            font-weight: 400;
+            color: #ffffffb3;
+            margin: 0;
+            font-size: 14px;
+        }
+        .setting-item-sub .exclude-manager{
+            margin: 10px 0;
+        }
+        .setting-header {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+        .toggle-btn {
+            height: 14px;
+            width: 14px;
+            opacity: .6;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .toggle-btn.collapsed {
+            transform: rotate(180deg);
+        }
+        .setting-content {
+            overflow: hidden;
+        }
+        .setting-content.collapsed {
+            max-height: 0;
+        }
+        .switch-group{
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            border-left: 4px solid var(--theme-color-border);
+        }
+        .switch-group .switch-wrapper{
+            border-left: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>dCopy 设置</h1>
+    <nav>
+        <a href="changelog.html" target="_blank">查看更新日志</a>
+    </nav>
+    <div class="search-box">
+        <input 
+            type="text" 
+            id="settingSearch" 
+            placeholder="搜索设置项..."
+        >
+    </div>
+    <div class="setting-item">
+        <div>
+            <div class="setting-header">
+                <h2>通用设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-group">
+                    <div class="switch-wrapper">
+                        <span class="switch-label">强制开启文本选中<font class="tag">建议开启</font></span>
+                        <label class="switch">
+                            <input type="checkbox" id="douyinFrameCapture" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-wrapper">
+                        <span class="switch-label">强制开启右键菜单并绕开禁用复制<font class="tag">建议开启</font></span>
+                        <label class="switch">
+                            <input type="checkbox" id="douyinFrameCapture" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-wrapper">
+                        <span class="switch-label">选中文本上右键可快捷复制</span>
+                        <label class="switch">
+                            <input type="checkbox" id="douyinFrameCapture" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="setting-item-sub">
+                    <h2>右键菜单排除设置</h2>
+                    <div class="exclude-manager">
+                        <div class="exclude-input">
+                            <input 
+                                type="text" 
+                                id="contextMenuExclude" 
+                                placeholder="输入要排除的域名，支持通配符 * (例如: *.example.com)"
+                            >
+                            <button id="addExclude">添加</button>
+                        </div>
+                        <div id="excludeList" class="exclude-list"></div>
+                    </div>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">强制开启 F12<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="setting-header">
+                <h2>抖音设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">刷视频 - 视频截图按钮</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">刷视频 - 评论区图片下载遮罩</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">刷视频 - 视频详情收起按钮</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">个人主页 - 视频封面下载遮罩</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">个人主页 - 视频封面批量下载按钮</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="setting-header">
+                <h2>b站设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 隐藏广告窗口<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 视频封面下载按钮</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">直播间 - 隐藏礼物栏</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">直播间 - 隐藏弹幕栏等级</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">直播间 - 隐藏高能榜与大航海</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">直播间 - 隐藏小黄车弹窗<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">视频页 - 视频截图按钮</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">视频页 - 详情信自动展开</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">视频页 - 屏蔽评论区上方的站内活动宣传窗</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">动态页 - 正在直播栏显示滚动条<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">动态页 - 图片排版放大<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="setting-header">
+                <h2>推特设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 图片下载遮罩</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 视频截图按钮</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="setting-header">
+                <h2>百度设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">首页 - 精简模式<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">搜索页 - 屏蔽搜索广告<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">搜索页 - 搜索工具默认开启<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">搜索页 - 屏蔽大家都在搜</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">搜索页 - 屏蔽相关搜索</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="setting-header">
+                <h2>必应设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">首页 - 精简模式<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">首页 - 默认显示搜索工具<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">搜索页 - 屏蔽相关搜索</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="setting-header">
+                <h2>百度贴吧设置项</h2>
+                <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 屏蔽广告<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">回答页 - 屏蔽广告回答<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    <div>
+        <div class="setting-header">
+            <h2>ChatGPT设置项</h2>
+            <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">对话页 - 编辑按钮粘性布局<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">对话页 - 输入框最大高度优化</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="setting-header">
+            <h2>Kemono设置项</h2>
+            <img src="../assets/hidden_show_btn.png" class="toggle-btn" alt="toggle">
+            </div>
+            <div class="setting-content">
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 广告屏蔽<font class="tag">建议开启</font></span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="switch-wrapper">
+                    <span class="switch-label">所有 - 图片展示排版优化</span>
+                    <label class="switch">
+                        <input type="checkbox" id="douyinFrameCapture" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 500px;"></div>
+</body>
+<script src="options.js"></script>
+</html>

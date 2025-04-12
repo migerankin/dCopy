@@ -1,0 +1,31 @@
+/* 强制开启文本选中 */ 
+html body *:not(input):not(textarea), 
+html body *:not(input):not(textarea)::after,
+html body *:not(input):not(textarea)::before {
+    user-select: auto !important;
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -webkit-touch-callout: auto !important;
+}
+html body [style*="user-select: none"],
+html body [style*="-webkit-user-select: none"],
+html body [style*="-moz-user-select: none"],
+html body [style*="-ms-user-select: none"],
+html body [style*="-khtml-user-select: none"] {
+    user-select: auto !important;
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -webkit-touch-callout: auto !important;
+}
+html body [style] {
+    user-select: auto !important;
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -webkit-touch-callout: auto !important;
+}

@@ -1,0 +1,208 @@
+/* 屏蔽所有广告 */ 
+.top-sec,
+#lu-home-aside,
+.app_download_box,
+.j_click_stats,
+.label_text,
+.close_btn.j_click_close,
+.aside_region.celebrity,
+.r-right-sec,
+#notice_item{
+    display: none !important;
+}
+#plat_recom_carousel{
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 100px !important;
+}
+div[id^="mediago-tb-frs-list-"] {
+    visibility: collapse !important;
+    display: none !important;
+    opacity: 0 !important;
+    user-select: none !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    clip-path: inset(100%) !important;
+    overflow: hidden !important;
+}
+/* 仿reddit样式 */
+/* body,
+.search_main_wrap,
+.left-sec,
+.right-sec,
+.top-sec{
+    background-color: #0e1113 !important;
+}
+.search_top.clearfix,
+.tbui_aside_float_bar,
+.r-top-sec,
+.u_official,
+.u_member,
+.i-arrow-down,
+.u-f-item.sign span,
+.u-f-item.unsign span,
+.search_btn_wrap{
+    display: none !important;
+}
+.search_form{
+    height: 56px !important;
+    padding: 0 25px !important;
+    box-sizing: border-box;
+    width: 100% !important;
+}
+.search_ipt{
+    border-color: transparent !important;
+    background-color: #2a3236 !important;
+    color: #ffffff !important;
+}
+.search_bright .search_inp_border:focus{
+    border-color: #ffffff !important;
+    border-width: 2px !important;
+}
+.tb_header_search_input{
+    box-sizing: border-box !important;
+    padding: 8px 16px !important;
+    height: 40px !important;
+    width: 560px !important;
+    border-radius: 25px !important;
+}
+.search_form form{
+    padding-left: 200px !important;
+}
+.head_inner .search_logo{
+    filter: sepia(100%) hue-rotate(-50deg) saturate(600%) brightness(70%) !important;
+    transform: scale(0.8) !important;
+    margin-top: 12px !important;
+}
+.search_form{
+    display: flex !important;
+    align-items: center !important;
+    border-bottom: 1px solid #3e4142 !important;
+    box-sizing: border-box !important;
+}
+.main-sec.clearfix{
+    width: 100% !important;
+}
+.content-sec.clearfix{
+    margin: 0 0 !important;
+    width: 100% !important;
+    display: flex !important;
+}
+.search_main.clearfix{
+    padding: 0 !important;
+}
+.search_main_wrap{
+    height: 56px !important;
+}
+.left-sec{
+    border-right: 1px solid #3e4142 !important;
+    padding: 16px !important;
+    width: 240px !important;
+}
+#com_userbar > ul > li:not(:nth-child(5)){
+    display: none !important;
+}
+#com_userbar ul li a{
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+.u_menu_item.u_menu_news{
+    padding-bottom: 2px !important;
+}
+.u_news{
+    background-color: #d93900;
+    top: 6px !important;
+    padding: 0 6px !important;
+    height: 40px !important;
+    border-radius: 26px;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+.u_menu_item.u_menu_news{
+    line-height: 33px !important;
+}
+.my_tieba_mod{
+    padding: 0 12px !important;
+    border-bottom: 1px solid #26282a !important;
+}
+.region_header.clearfix{
+    color: #748791 !important;
+    font-weight: 200 !important;
+}
+.right-sec.clearfix{
+    display: flex !important;
+    flex: 1 !important;
+}
+.r-left-sec{
+    float: none !important;
+    width: 100% !important;
+}
+.sub_nav_wrap.clearfix{
+    width: 100% !important;
+}
+.new_list>li{
+    margin-left: 135px !important;
+    padding-left: 15px !important;
+    width: 65% !important;
+    border-bottom: 1px solid #26282a !important;
+    padding-top: 4px !important;
+    padding-bottom: 10px !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+}
+.n_right{
+    width: 100% !important;
+}
+.u-f-item.sign,.u-f-item.unsign{
+    background: none !important;
+    background-color: #181c1f !important;
+    transition: all 0.3s !important;
+    border-radius: 26px !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+    color: #ffffff !important;
+    border: 2px solid transparent !important;
+    text-decoration: none !important;
+}
+.u-f-item.sign:hover,.u-f-item.unsign:hover{
+    background-color: #d93a00b7 !important;
+    border-color: #d93a00 !important;
+}
+#likeforumwraper{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px !important;
+}
+.new_list .title{
+    color: #EEF1F3 !important;
+    font-size: 16px !important;
+}
+.n_name {
+    color: #B7CAD4 !important;
+    font-size: 12px !important;
+}
+.n_txt{
+    color: #878787 !important;
+    font-size: 12px !important;
+}
+.page-container .left-sec{
+    border-top: none !important;
+}
+.n_img{
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+}
+.n_img li {
+    width: 30% !important;
+}
+.n_img li img{
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px;
+    border: none !important;
+} */

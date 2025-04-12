@@ -1,0 +1,9 @@
+.rewrite-btn{
+    position: sticky !important;
+    display: flex !important;
+    justify-content: end !important;
+    margin-right: -85px !important;
+}
+.bg-token-main-surface-tertiary>div.m-2.overflow-auto{
+    max-height: 60dvh !important;
+}

@@ -1,0 +1,35 @@
+.ad-container {
+    display: none !important;
+}
+#ts_ad_native_biczm {
+    display: none !important;
+}
+a[rel~="nofollow"][rel~="noopener"] {
+    pointer-events: none !important;
+    display: none !important;
+}
+[class*="bottomRight-"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 修改图片适应方式 */
+.post-card__image {
+    object-fit: contain !important;  /* 改为 contain 以保持原始比例 */
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    margin: auto !important;  /* 在 flex 容器中居中 */
+}
+
+.post-card__image-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.card-list__items{
+    --card-size: 200px !important;
+}

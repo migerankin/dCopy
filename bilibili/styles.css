@@ -1,0 +1,133 @@
+.bilibili-save-frame-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(0, 0, 0);
+  opacity: 0.4;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85px;
+  color: #f0f0f0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  border-radius: 16px;
+  z-index: 999;
+}
+
+.bilibili-save-frame-btn:hover {
+  opacity: 1;
+}
+
+/* 修改B站原有元素样式 */
+.bpx-player-top-left {
+  left: initial !important;
+  right: 24px !important;
+  display: none !important;
+}
+
+.bpx-player-top-left-follow,
+.slide-ad-exp,
+.video-page-game-card-small,
+.ad-report,
+.right-bottom-banner,
+.pop-live-small-mode,
+.left-loc-entry,
+.ad-feedback-menu,
+.feedback-menu,
+.video-desc-container>.toggle-btn,
+.shop-popover,
+/* .rank-list-ctnr>.tabs>.pilot, */
+/* .activity-gather-entry, */
+/* .gift-control-panel, */
+/* .web-player-icon-feedback, */
+/* .tab-content-pilot, */
+.title-label,
+.wealth-medal-ctnr,
+.bili-dyn-ads,
+.bili-dyn-version-control,
+.activity-m-v1,/* 视频页评论顶部的站内活动宣传div */
+.shop-popover, .z-shop-popover-vm,/* 直播间小黄车 */
+.bpx-player-top-issue {
+  display: none !important;
+}
+
+/* .live-skin-coloration-area{
+    pointer-events: none !important;
+    cursor: default !important;    
+} */
+
+/* .rank-list-section,.rank-list-ctnr{
+    height: 30px !important;
+} */
+
+/* .gift-control-section{
+    height: 98px !important;
+} */
+
+.basic-desc-info{
+    height: auto !important;
+}
+
+.bili-album__preview.grid9 .bili-album__preview__picture,
+.bili-album__preview.grid6 .bili-album__preview__picture{
+    height: auto !important;
+    width: 30% !important;
+}
+.bili-album__preview.grid4 .bili-album__preview__picture{
+    height: auto !important;
+    width: 45% !important;
+}
+.bili-album__preview.grid3 .bili-album__preview__picture{
+    height: auto !important;
+    width: 30% !important;
+}
+.bili-album__preview.grid3,
+.bili-album__preview.one,
+.bili-album__preview.grid4,
+.bili-album__preview.grid6,
+.bili-album__preview.grid9{
+    width: 100% !important;
+}
+.bili-album__preview.one .bili-album__preview__picture,
+.bili-album__preview.one .bili-album__preview__picture img{
+    height: auto !important;
+    max-height: 300px !important;
+    width: auto !important;
+    max-width: 90% !important;
+}
+.bili-album__preview.one .b-img{
+    background-color: transparent !important;
+}
+
+/* 动态关注列表样式 */
+.bili-dyn-live-users__body {
+    padding-right: 8px;
+    max-height: 612px !important;
+    overflow: auto !important;
+}
+.bili-dyn-live-users{
+    padding-right: 10px !important;
+}
+.bili-dyn-live-users__body::-webkit-scrollbar{
+    width: 4px;
+}
+.bili-dyn-live-users__body::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background: #e6e6e6;
+}
+.bili-dyn-live-users__body::-webkit-scrollbar-thumb:hover{
+    background: #a8a8a8;
+}
+.bili-dyn-live-users__body::-webkit-scrollbar-track{
+    border-radius: 2px;
+    background: #ffffff;
+}
+.bili-dyn-live-users__item__left{
+    padding-left: 1px;
+}
+div.bpx-player-tooltip-item div.bpx-player-tooltip-title{
+    display: none !important;
+}

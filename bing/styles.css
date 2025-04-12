@@ -1,0 +1,23 @@
+/* 首页精简 */
+.bottom_row,
+#id_mobpoppos {
+    display: none !important;
+}
+.centralized.sbox_sl{
+    margin-top: 70px !important;
+}
+
+/* 默认显示搜索工具 */
+#b_tween_searchTools{
+    display: block !important;
+}
+#b_tween_searchResults{
+    display: none !important;
+}
+
+/* 屏蔽相关搜索 */
+#brsv3,
+.b_rrsr,
+#inline_rs{
+    display: none !important;
+}

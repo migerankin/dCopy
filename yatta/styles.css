@@ -1,0 +1,20 @@
+div#avatar-back-video,
+div#home-top-video,
+div#home-right,
+div#avatar-statTable,
+div#avatar-ascension-top,
+a#avatar-story-topup,
+div#avatar-bottom-wide,
+div#archive-top,
+div#archive-bottom,
+div.col-span-2,
+ins,
+span[style*="z-index: 2147483646"]{
+    visibility: hidden !important;
+    display: none !important;
+    opacity: 0 !important;
+    user-select: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
