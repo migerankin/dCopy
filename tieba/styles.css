@@ -15,7 +15,7 @@
     pointer-events: none !important;
     height: 100px !important;
 }
-div[id^="mediago-tb-frs-list-"] {
+div[id^="mediago-tb-frs-list-"],.ylh-ad-container {
     visibility: collapse !important;
     display: none !important;
     opacity: 0 !important;

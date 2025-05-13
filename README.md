@@ -25,7 +25,8 @@
   * 屏蔽搜索结果中的广告推广
 * X（原Twitter）
   * 显示推文的LVR（Like-to-View Ratio，每 100 次浏览中有多少人点赞）
-
+* Google
+  * 阻止访问google.com时重定向到google.com.hk的操作
 
 # dCopy - Browser plugins
 

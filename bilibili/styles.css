@@ -131,3 +131,10 @@
 div.bpx-player-tooltip-item div.bpx-player-tooltip-title{
     display: none !important;
 }
+
+/* 完整标题 */
+.bili-video-card__title{
+    height: auto !important;
+    line-clamp: none !important;
+    -webkit-line-clamp: none !important;
+}
