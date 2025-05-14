@@ -25,8 +25,7 @@
   * 屏蔽搜索结果中的广告推广
 * X（原Twitter）
   * 显示推文的LVR（Like-to-View Ratio，每 100 次浏览中有多少人点赞）
-* Google
-  * 阻止访问google.com时重定向到google.com.hk的操作
+  * 优化用户界面返回按钮的逻辑，现在在选择游览某一用户的“贴文”、“回复”、“媒体”等子栏目后点击返回会直接返回主页，而不是先经历一遍子栏目的记录
 
 # dCopy - Browser plugins
 
@@ -55,3 +54,4 @@ Personal browser plugin
   * Block ad-sponsored content in search results
 * X (formerly Twitter)
   * Display tweet LVR (Like-to-View Ratio: how many likes per 100 views)
+  * Optimized the logic of the back button in the user interface. Now, after selecting a user's "Posts", "Replies", "Media" and other sub-columns, clicking back will directly return to the home page instead of going through the records of the sub-columns first.
