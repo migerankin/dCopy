@@ -43,10 +43,6 @@
       "css": ["yatta/styles.css"]
     },
     {
-      "matches": ["*://*.google.com/*"],
-      "js": ["google/content.js"]
-    },
-    {
       "matches": ["*://*.bilibili.com/*"],
       "css": ["bilibili/styles.css"],
       "js": ["bilibili/content.js"]
